@@ -26,12 +26,10 @@ def compare(firstData, secondData):
     for data in firstData:
         compRes, secData = compareOneParam(data, secondData)
         if not compRes:
-            print('различия: ')
-            print(data.name + " <====> " + data.data)
             if secData is not None:
-                print(secData.name + " <====> " + secData.data)
+                print(data.name + " ==> " + "[" + data.data + "] <===> " + "[" + secData.data + "]")
             else:
-                print('нет')
+                print(data.name + " ==> " + "[" + data.data + "] <===> " + "[" + 'нет' + "]")
 
 def parseFile(wordParse, howSkipFirst, howSkipEnd, data):
     data = re.split('<' + wordParse + ' name="|<' + wordParse + '-array name="|<plurals name="', data)
@@ -49,6 +47,3 @@ if __name__ == '__main__':
             parseFile('string', 1, 1,
                       loadFile('/home/azch/check.xml'))
             )
-
-
-
